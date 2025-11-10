@@ -1,0 +1,211 @@
+ /* Cores principais */
+        :root {
+            --primary-dark: #04588C;
+            --primary-medium: #0788D9;
+            --primary-light: #14B5D9;
+            --gray-dark: #444444;
+            --gray-light: #f8f9fa;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--gray-light);
+            color: var(--gray-dark);
+        }
+        /* Top bar com contatos */
+        .top-bar {
+            background-color: var(--primary-light);
+            color: white;
+            font-size: 0.9rem;
+            padding: 0.375rem 1rem;
+        }
+        .top-bar a {
+            color: white;
+            text-decoration: underline;
+        }
+        /* Navbar custom */
+        .navbar-custom {
+            background-color: var(--primary-dark);
+            
+        }
+        .navbar-custom .navbar-nav .nav-link {
+            color: white;
+            font-weight: 600;
+            
+        }
+        .navbar-custom .navbar-nav .nav-link:hover,
+        .navbar-custom .navbar-nav .nav-link.active {
+            color: var(--primary-light);
+            
+        }
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: white !important;
+            
+        }
+        /* Header image style */
+        .header-image {
+            width: 100%;
+            max-height: 350px;
+            object-fit: cover;
+        }
+        /* Seção serviços */
+        #servicos {
+            background: white;
+            padding: 4rem 1rem 4rem 1rem;
+            text-align: center;
+        }
+        #servicos h2 {
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+        #servicos .divider {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 2rem;
+            gap: 1rem;
+        }
+        #servicos .divider hr {
+            flex-grow: 1;
+            border: 0;
+            border-top: 2px solid var(--primary-light);
+            max-width: 120px;
+            margin: 0;
+        }
+        #servicos .divider .icon-car {
+            font-size: 1.5rem;
+            color: var(--primary-light);
+        }
+        /* Cards de serviços */
+        .service-card {
+            border: none;
+            background: transparent;
+            padding: 0 1rem;
+            margin-bottom: 2rem;
+        }
+        .service-card .icon-circle {
+            width: 70px;
+            height: 70px;
+            background: var(--primary-dark);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 15px auto;
+            color: white;
+            font-size: 28px;
+        }
+        .service-card h5 {
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+            color: var(--primary-dark);
+        }
+        .service-card p {
+            font-size: 0.9rem;
+            color: #555;
+        }
+        /* Seção parceiros */
+        #parceiros {
+            background-color: black;
+            color: white;
+            padding: 4rem 1rem;
+            text-align: center;
+            position: relative;
+        }
+        #parceiros h2 {
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+        #parceiros .divider {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 3rem;
+            gap: 1rem;
+        }
+        #parceiros .divider hr {
+            flex-grow: 1;
+            border: 0;
+            border-top: 2px solid var(--primary-light);
+            max-width: 120px;
+            margin: 0;
+        }
+        #parceiros .divider .icon-car {
+            font-size: 1.5rem;
+            color: var(--primary-light);
+        }
+        #parceiros .logos {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem 4rem;
+            filter: brightness(1);
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        #parceiros .logos img {
+            max-height: 50px;
+            filter: brightness(1);
+            transition: filter 0.3s ease;
+        }
+        #parceiros .logos img:hover {
+            filter: brightness(0.7);
+        }
+        /* Seção parceiros pagamento */
+        #pagamento {
+            padding: 4rem 1rem;
+            background: url('https://images.pexels.com/photos/259973/pexels-photo-259973.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940') center center/cover no-repeat;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+        #pagamento::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(4, 89, 138, 0.75); /* semitransparente azul escuro */
+            z-index: 0;
+        }
+        #pagamento .content {
+            position: relative;
+            z-index: 1;
+        }
+        #pagamento h2 {
+            font-weight: 700;
+            margin-bottom: 2rem;
+        }
+        #pagamento .logos-pagamento {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 3rem 4rem;
+            align-items: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        #pagamento .logos-pagamento img {
+            max-height: 50px;
+            filter: brightness(1);
+            transition: filter 0.3s ease;
+        }
+        #pagamento .logos-pagamento img:hover {
+            filter: brightness(0.85);
+        }
+        /* Footer */
+        footer {
+            background-color: var(--primary-dark);
+            color: white;
+            padding: 2rem 1rem;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+        footer a {
+            color: var(--primary-light);
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+        /* Ícones pelo Bootstrap Icons CDN */
