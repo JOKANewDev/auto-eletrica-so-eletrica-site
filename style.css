@@ -43,6 +43,7 @@
             color: white !important;
             
         }
+
         /* Header image style */
         .header-image {
             width: 100%;
@@ -212,8 +213,8 @@
 
 
 .carousel {
-  width: 1000;         /* tamanho do carrossel */
-  height: 300px;
+  width: 100%;         /* tamanho do carrossel */
+  height: auto;
   overflow: hidden;     /* esconde o que passa das bordas */
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.3);
