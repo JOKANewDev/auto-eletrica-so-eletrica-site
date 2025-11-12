@@ -107,93 +107,6 @@
             font-size: 0.9rem;
             color: #555;
         }
-        /* Seção parceiros */
-        #parceiros {
-            background-color: black;
-            color: white;
-            padding: 4rem 1rem;
-            text-align: center;
-            position: relative;
-        }
-        #parceiros h2 {
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-        }
-        #parceiros .divider {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 3rem;
-            gap: 1rem;
-        }
-        #parceiros .divider hr {
-            flex-grow: 1;
-            border: 0;
-            border-top: 2px solid var(--primary-light);
-            max-width: 120px;
-            margin: 0;
-        }
-        #parceiros .divider .icon-car {
-            font-size: 1.5rem;
-            color: var(--primary-light);
-        }
-        #parceiros .logos {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 2rem 4rem;
-            filter: brightness(1);
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-        #parceiros .logos img {
-            max-height: 50px;
-            filter: brightness(1);
-            transition: filter 0.3s ease;
-        }
-        #parceiros .logos img:hover {
-            filter: brightness(0.7);
-        }
-        /* Seção parceiros pagamento */
-        #pagamento {
-            padding: 4rem 1rem;
-            background: url('https://images.pexels.com/photos/259973/pexels-photo-259973.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940') center center/cover no-repeat;
-            color: white;
-            text-align: center;
-            position: relative;
-        }
-        #pagamento::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: rgba(4, 89, 138, 0.75); /* semitransparente azul escuro */
-            z-index: 0;
-        }
-        #pagamento .content {
-            position: relative;
-            z-index: 1;
-        }
-        #pagamento h2 {
-            font-weight: 700;
-            margin-bottom: 2rem;
-        }
-        #pagamento .logos-pagamento {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 3rem 4rem;
-            align-items: center;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-        #pagamento .logos-pagamento img {
-            max-height: 50px;
-            filter: brightness(1);
-            transition: filter 0.3s ease;
-        }
-        #pagamento .logos-pagamento img:hover {
-            filter: brightness(0.85);
-        }
         /* Footer */
         footer {
             background-color: var(--primary-dark);
@@ -212,37 +125,74 @@
         /* Ícones pelo Bootstrap Icons CDN */
 
 
-.carousel {
-  width: 100%;         /* tamanho do carrossel */
-  height: auto;
-  overflow: hidden;     /* esconde o que passa das bordas */
+.carousel-container {
+  position: relative;
+  max-width: 100%;
+  overflow: hidden;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.3);
   margin: 20px auto;
+  height: 400px;
+}
+
+.carousel {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
 
 .slides {
   display: flex;
-  width: 300%;          /* 3 imagens = 300% */
-  animation: slide 15s infinite;
+  width: 300%; /* 3 slides */
+  height: 100%;
+  transition: transform 0.5s ease-in-out;
 }
 
 .slide {
-  width: 100%;
   flex-shrink: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .slide img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  user-select: none; /* Evita seleção */
 }
 
-@keyframes slide {
-  0% { transform: translateX(0); }
-  33% { transform: translateX(0); }
-  38% { transform: translateX(-100%); }
-  71% { transform: translateX(-100%); }
-  76% { transform: translateX(-200%); }
-  100% { transform: translateX(-200%); }
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(4, 89, 138, 0.75);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: 2rem;
+  cursor: pointer;
+  border-radius: 6px;
+  user-select: none;
+  z-index: 10;
+  transition: background-color 0.3s;
+}
+
+.carousel-btn:hover {
+  background-color: rgba(4, 89, 138, 1);
+}
+
+.carousel-btn.prev {
+  left: 10px;
+}
+
+.carousel-btn.next {
+  right: 10px;
+}
+
+/* Responsividade para tablets e menores */
+@media (max-width: 768px) {
+    .carousel-control-prev,
+    .carousel-control-next {
+      display: none;
+    }
 }
