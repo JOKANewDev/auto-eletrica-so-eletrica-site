@@ -1,0 +1,64 @@
+:root {
+            --primary-dark: #203763;
+            --primary-medium: #6D84B0;
+            --primary-light: #518DFC;
+            --gray-dark: #444444;
+            --gray-light: #f8f9fa;
+        }
+
+body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: var(--primary-dark); /* azul similar */
+            color: #ccc;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .image {
+            width: 100%;
+            height: 350px;
+            background: url('../../img/about/background.jpg') no-repeat center center;
+            background-size: cover;
+            filter: grayscale(100%);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-top: 30px;
+            margin-bottom: 40px;
+            color: #bbb;
+            font-weight: 600;
+        }
+
+        .content {
+            display: flex;
+            gap: 40px;
+            justify-content: space-between;
+            color: #ccc;
+        }
+
+        .content > div {
+            flex: 1;
+        }
+
+        p {
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+
+
+        @media(max-width: 768px) {
+            .p{
+                font-size: 0.9rem;
+            }
+            .content {
+                padding: 0 10px;
+                flex-direction: column;
+            }
+        }

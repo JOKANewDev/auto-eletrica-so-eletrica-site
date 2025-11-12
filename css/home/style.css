@@ -132,12 +132,12 @@
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.3);
   margin: 20px auto;
-  height: 400px;
+  height: 450px; /* aumenta o tamanho total */
 }
 
 .carousel {
   width: 100%;
-  height: 100%;
+  height: 100%; /* ocupa todo o container */
   overflow: hidden;
 }
 
@@ -145,23 +145,23 @@
   display: flex;
   width: 300%; /* 3 slides */
   height: 100%;
-  transition: 9s;
   transition: transform 0.5s ease-in-out;
 }
 
 .slide {
   flex-shrink: 0;
   width: 100%;
-  height: 100%;
+  height: 100%; /* faz cada slide ocupar 100% do container */
 }
 
 .slide img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  user-select: none; /* Evita seleção */
+  object-fit: cover; /* garante que preencha sem distorcer */
+  user-select: none;
 }
 
+/* Botões */
 .carousel-btn {
   position: absolute;
   top: 50%;
@@ -190,15 +190,19 @@
   right: 10px;
 }
 
-/* Esconder os indicadores do carousel */
+/* Esconde os indicadores */
 .carousel-indicators {
   display: none;
 }
 
-/* Responsividade para tablets e menores */
+/* Responsividade */
 @media (max-width: 768px) {
-    .carousel-control-prev,
-    .carousel-control-next {
-      display: none;;
-    }
+  .carousel-container {
+    height: 350px; /* menor, mas ainda grande no celular */
+  }
+
+  .carousel-control-prev,
+  .carousel-control-next {
+    display: none;
+  }
 }
