@@ -6,7 +6,7 @@
     <title>Autoelétrica Só Elétrica | Tecnologia Automotiva</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+    <link rel="shortcut icon" href="favicon/favicon.ico" type="image/x-icon">
     <style>
         :root {
             --primary-blue: #0F62FE;
@@ -17,11 +17,8 @@
             --accent-glow: rgba(15, 98, 254, 0.4);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        html { scroll-behavior: smooth; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Inter', sans-serif;
@@ -45,27 +42,10 @@
             padding: 20px;
         }
 
-        .hero-content { max-width: 800px; }
+        .hero h1 { font-size: 3.5rem; margin-bottom: 20px; text-transform: uppercase; letter-spacing: -1px; }
+        .hero p { font-size: 1.2rem; color: var(--text-gray); margin-bottom: 35px; }
 
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: -1px;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            color: var(--text-gray);
-            margin-bottom: 35px;
-        }
-
-        .btn-group {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
+        .btn-group { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
 
         .btn {
             padding: 15px 35px;
@@ -75,43 +55,80 @@
             transition: all 0.3s ease;
             text-transform: uppercase;
             font-size: 0.9rem;
+            cursor: pointer;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        .btn-primary {
-            background-color: var(--primary-blue);
-            color: white;
-            box-shadow: 0 0 20px var(--accent-glow);
+        .btn-primary { background-color: var(--primary-blue); color: white; box-shadow: 0 0 20px var(--accent-glow); }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 0 30px var(--primary-blue); }
+
+        .btn-outline { border: 2px solid white; color: white; background: transparent; }
+        .btn-outline:hover { background: white; color: var(--dark-bg); }
+
+        /* --- WhatsApp Flutuante --- */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50px;
+            width: 60px;
+            height: 60px;
+            font-size: 30px;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.3s;
+            text-decoration: none;
+        }
+        .whatsapp-float:hover { transform: scale(1.1); }
+
+        /* --- Modal --- */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0; top: 0; width: 100%; height: 100%;
+            background-color: rgba(0,0,0,0.85);
+            backdrop-filter: blur(5px);
         }
 
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 0 30px var(--primary-blue);
+        .modal-content {
+            background-color: var(--card-bg);
+            margin: 5% auto;
+            padding: 40px;
+            border: 1px solid var(--primary-blue);
+            width: 90%;
+            max-width: 500px;
+            border-radius: 15px;
+            position: relative;
         }
 
-        .btn-outline {
-            border: 2px solid white;
-            color: white;
-        }
+        .close-modal { position: absolute; right: 20px; top: 15px; font-size: 28px; cursor: pointer; color: var(--text-gray); }
 
-        .btn-outline:hover {
-            background: white;
-            color: var(--dark-bg);
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; margin-bottom: 8px; color: var(--text-gray); }
+        .form-group input, .form-group textarea {
+            width: 100%; padding: 12px; background: #2a2a2a; border: 1px solid #444; color: white; border-radius: 5px;
         }
 
         /* --- Serviços --- */
-        .section-padding { padding: 100px 5%; }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
+        .section-padding { padding: 80px 5%; }
+        .section-title { text-align: center; margin-bottom: 60px; }
         .section-title h2 { font-size: 2.5rem; color: var(--primary-blue); }
 
         .grid-services {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .card {
@@ -122,75 +139,61 @@
             transition: 0.3s;
             text-align: center;
         }
-
-        .card:hover {
-            border-color: var(--primary-blue);
-            transform: translateY(-10px);
-        }
-
-        .card i {
-            font-size: 2.5rem;
-            color: var(--primary-blue);
-            margin-bottom: 20px;
-        }
+        .card:hover { border-color: var(--primary-blue); transform: translateY(-10px); }
+        .card i { font-size: 2.5rem; color: var(--primary-blue); margin-bottom: 20px; }
+        .card h3 { margin-bottom: 15px; }
 
         /* --- Diferenciais --- */
-        .features {
-            background: #1a1a1a;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-            padding: 50px 5%;
-        }
+        .features { background: #1a1a1a; display: flex; flex-wrap: wrap; justify-content: space-around; padding: 40px 5%; }
+        .feature-item { display: flex; align-items: center; gap: 10px; margin: 15px; font-weight: 600; }
+        .feature-item i { color: #00FF88; }
 
-        .feature-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin: 15px;
-            font-weight: 600;
-        }
+        .cta-section { background: var(--primary-blue); text-align: center; padding: 80px 5%; }
 
-        .feature-item i { color: #00FF88; } /* Verde para check */
+        footer { background: #000; padding: 60px 5% 20px; text-align: center; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; text-align: left; margin-bottom: 40px; }
 
-        /* --- CTA --- */
-        .cta-section {
-            background: var(--primary-blue);
-            text-align: center;
-            padding: 80px 5%;
-        }
-
-        .cta-section h2 { font-size: 2.2rem; margin-bottom: 20px; }
-
-        /* --- Footer --- */
-        footer {
-            background: #000;
-            padding: 60px 5% 20px;
-            text-align: center;
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
-            text-align: left;
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2.2rem; }
-        }
+        @media (max-width: 768px) { .hero h1 { font-size: 2.2rem; } }
     </style>
 </head>
 <body>
+
+    <a href="https://wa.me/556793442497?text=Olá! Estou no site da Só Elétrica e gostaria de tirar uma dúvida sobre meu veículo." class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <div id="modalAgendamento" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2 style="margin-bottom: 10px; color: var(--primary-blue);">Agendar Serviço</h2>
+            <p style="margin-bottom: 20px; color: var(--text-gray); font-size: 0.9rem;">Preencha para agilizarmos seu atendimento.</p>
+            <form id="formAgendamento">
+                <div class="form-group">
+                    <label>Seu Nome</label>
+                    <input type="text" id="nome" required placeholder="Ex: João Silva">
+                </div>
+                <div class="form-group">
+                    <label>Veículo / Modelo</label>
+                    <input type="text" id="veiculo" required placeholder="Ex: Scania R450 / Volvo FH">
+                </div>
+                <div class="form-group">
+                    <label>O que está acontecendo?</label>
+                    <textarea id="problema" rows="3" placeholder="Ex: Não dá partida, luz de injeção acesa..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">Enviar para o WhatsApp</button>
+            </form>
+        </div>
+    </div>
 
     <header class="hero">
         <div class="hero-content">
             <h1>Autoelétrica <span style="color: var(--primary-blue);">Só Elétrica</span></h1>
             <p>Diagnóstico computadorizado e precisão em eletrônica automotiva de alto nível.</p>
             <div class="btn-group">
-                <a href="#" class="btn btn-primary">Agendar Serviço</a>
-                <a href="#" class="btn btn-outline"><i class="fab fa-whatsapp"></i> Fale no WhatsApp</a>
+                <button id="openModal" class="btn btn-primary">Agendar Serviço</button>
+                <a href="https://wa.me/556793442497?text=Olá! Gostaria de fazer um orçamento de serviço elétrico." class="btn btn-outline">
+                    <i class="fab fa-whatsapp"></i> WhatsApp
+                </a>
             </div>
         </div>
     </header>
@@ -205,57 +208,89 @@
     <section class="section-padding">
         <div class="section-title">
             <h2>Nossas Soluções</h2>
-            <p>Tecnologia aplicada à performance do seu veículo</p>
+            <p>Especialistas em Linha Pesada, Máquinas e Utilitários</p>
         </div>
         <div class="grid-services">
             <div class="card">
+                <i class="fas fa-sync-alt"></i>
+                <h3>Alternadores</h3>
+                <p>Manutenção completa, troca de escovas, placas retificadoras e reguladores de voltagem.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-key"></i>
+                <h3>Motores de Partida</h3>
+                <p>Reparo especializado para garantir a ignição perfeita do seu motor em qualquer condição.</p>
+            </div>
+            <div class="card">
                 <i class="fas fa-microchip"></i>
                 <h3>Injeção Eletrônica</h3>
-                <p>Análise completa de sensores e atuadores para máxima eficiência.</p>
+                <p>Análise completa de sensores e atuadores para máxima eficiência e economia.</p>
             </div>
             <div class="card">
                 <i class="fas fa-car-battery"></i>
                 <h3>Bateria e Carga</h3>
-                <p>Testes de alternador e substituição de baterias de alta performance.</p>
+                <p>Testes precisos de sistema de carga e substituição de baterias de alta performance.</p>
             </div>
             <div class="card">
                 <i class="fas fa-laptop-diagnostic"></i>
                 <h3>Scanner Automotivo</h3>
-                <p>Leitura de falhas e reset de parâmetros com software atualizado.</p>
+                <p>Leitura de falhas e reset de parâmetros com os softwares mais atualizados do mercado.</p>
             </div>
             <div class="card">
                 <i class="fas fa-bolt"></i>
                 <h3>Chicotes Elétricos</h3>
-                <p>Reparo e reconstrução de fiação com isolamento padrão original.</p>
+                <p>Reparo e reconstrução de fiação com isolamento e acabamento padrão original.</p>
             </div>
         </div>
     </section>
 
     <section class="cta-section">
-        <h2>Seu caminhão e máquinas apresenta falhas elétricas?</h2>
-        <p style="margin-bottom: 30px;">Não espere o problema piorar. Fale agora com um técnico especialista.</p>
-        <a href="https://wa.me/556793442497" class="btn btn-outline" style="background: white; color: var(--primary-blue); border:none;">Chamar no WhatsApp</a>
+        <h2>Seu caminhão ou máquina apresenta falhas?</h2>
+        <p style="margin-bottom: 30px;">Não deixe sua frota parada. Fale agora com um técnico especialista.</p>
+        <a href="https://wa.me/556793442497?text=Olá! Preciso de um atendimento urgente para meu veículo." class="btn btn-outline" style="background: white; color: var(--primary-blue); border:none;">Chamar no WhatsApp</a>
     </section>
 
     <footer>
         <div class="footer-grid">
             <div>
                 <h3>Só Elétrica</h3>
-                <p style="color: var(--text-gray); margin-top: 15px;">Especialistas em energia automotiva desde 2010.</p>
+                <p style="color: var(--text-gray); margin-top: 15px;">Especialistas em energia automotiva e diagnósticos avançados.</p>
             </div>
             <div>
                 <h4>Contato</h4>
-                <p style="color: var(--text-gray);">(67) 99999-9999</p>
-                <p style="color: var(--text-gray);">contato@soeletrica.com.br</p>
+                <p style="color: var(--text-gray);">(67) 99344-2497</p>
+                <p style="color: var(--text-gray);">pauloeletricoarevalo@gmail.com</p>
             </div>
             <div>
-                <h4>Endereço</h4>
-                <p style="color: var(--text-gray);">Av. da Tecnologia, 450 - Parque Industrial</p>
+                <h4>Localização</h4>
+                <p style="color: var(--text-gray);">R. Conceição Interlano Neto, 182 - Vivendas do Parque</p>
             </div>
         </div>
         <hr style="border: 0; border-top: 1px solid #333; margin-bottom: 20px;">
-        <p style="font-size: 0.8rem; color: var(--text-gray);">© 2026 Autoelétrica Só Elétrica. Desenvolvido com foco em precisão.</p>
+        <p style="font-size: 0.8rem; color: var(--text-gray);">© 2026 Autoelétrica Só Elétrica. Excelência em Eletrônica Automotiva.</p>
     </footer>
 
+    <script>
+        // Modal Logic
+        const modal = document.getElementById("modalAgendamento");
+        const btn = document.getElementById("openModal");
+        const span = document.getElementsByClassName("close-modal")[0];
+
+        btn.onclick = () => modal.style.display = "block";
+        span.onclick = () => modal.style.display = "none";
+        window.onclick = (event) => { if (event.target == modal) modal.style.display = "none"; }
+
+        // WhatsApp Form Logic
+        document.getElementById('formAgendamento').onsubmit = function(e) {
+            e.preventDefault();
+            const nome = document.getElementById('nome').value;
+            const veiculo = document.getElementById('veiculo').value;
+            const problema = document.getElementById('problema').value;
+            
+            const texto = `Olá! Gostaria de agendar um serviço:%0A%0A*Nome:* ${nome}%0A*Veículo:* ${veiculo}%0A*Problema:* ${problema}`;
+            window.open(`https://wa.me/556793442497?text=${texto}`, '_blank');
+            modal.style.display = "none";
+        };
+    </script>
 </body>
 </html>
