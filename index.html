@@ -119,7 +119,7 @@
         }
 
         /* --- Serviços --- */
-        .section-padding { padding: 80px 5%; }
+        .section-padding { padding: 50px 5%; }
         .section-title { text-align: center; margin-bottom: 60px; }
         .section-title h2 { font-size: 2.5rem; color: var(--primary-blue); }
 
@@ -133,15 +133,43 @@
 
         .card {
             background: var(--card-bg);
-            padding: 40px;
             border-radius: 15px;
             border: 1px solid #333;
             transition: 0.3s;
-            text-align: center;
+            text-align: left;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
         }
+        
         .card:hover { border-color: var(--primary-blue); transform: translateY(-10px); }
-        .card i { font-size: 2.5rem; color: var(--primary-blue); margin-bottom: 20px; }
-        .card h3 { margin-bottom: 15px; }
+
+        /* Ajuste específico para as ilustrações (Imagens .png) */
+        .card-img-container {
+            width: 100%;
+            height: 130px; 
+            background: #252525; /* Fundo sutil para destacar o PNG */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px; /* Espaço para a imagem não tocar as bordas */
+            border-bottom: 2px solid var(--primary-blue);
+        }
+
+        .card-img-container img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain; /* Garante que a ilustração apareça inteira sem cortes */
+            transition: transform 0.4s ease;
+        }
+
+        .card:hover .card-img-container img {
+            transform: scale(1.1);
+        }
+
+        .card-info { padding: 25px; }
+        .card h3 { margin-bottom: 12px; font-size: 1.3rem; color: #fff; }
+        .card p { color: var(--text-gray); font-size: 0.9rem; }
 
         /* --- Diferenciais --- */
         .features { background: #1a1a1a; display: flex; flex-wrap: wrap; justify-content: space-around; padding: 40px 5%; }
@@ -166,7 +194,6 @@
         <div class="modal-content">
             <span class="close-modal">&times;</span>
             <h2 style="margin-bottom: 10px; color: var(--primary-blue);">Agendar Serviço</h2>
-            <p style="margin-bottom: 20px; color: var(--text-gray); font-size: 0.9rem;">Preencha para agilizarmos seu atendimento.</p>
             <form id="formAgendamento">
                 <div class="form-group">
                     <label>Seu Nome</label>
@@ -178,7 +205,7 @@
                 </div>
                 <div class="form-group">
                     <label>O que está acontecendo?</label>
-                    <textarea id="problema" rows="3" placeholder="Ex: Não dá partida, luz de injeção acesa..."></textarea>
+                    <textarea id="problema" rows="3" placeholder="Ex: Não dá partida..."></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">Enviar para o WhatsApp</button>
             </form>
@@ -191,87 +218,78 @@
             <p>Diagnóstico computadorizado e precisão em eletrônica automotiva de alto nível.</p>
             <div class="btn-group">
                 <button id="openModal" class="btn btn-primary">Agendar Serviço</button>
-                <a href="https://wa.me/556793442497?text=Olá! Gostaria de fazer um orçamento de serviço elétrico." class="btn btn-outline">
+                <a href="https://wa.me/556793442497?text=Olá! Gostaria de fazer um orçamento." class="btn btn-outline">
                     <i class="fab fa-whatsapp"></i> WhatsApp
                 </a>
             </div>
         </div>
     </header>
 
-    <section class="features">
-        <div class="feature-item"><i class="fas fa-check-circle"></i> Atendimento Rápido</div>
-        <div class="feature-item"><i class="fas fa-check-circle"></i> Equipamentos Modernos</div>
-        <div class="feature-item"><i class="fas fa-check-circle"></i> Profissionais Qualificados</div>
-        <div class="feature-item"><i class="fas fa-check-circle"></i> Transparência Total</div>
-    </section>
-
     <section class="section-padding">
         <div class="section-title">
             <h2>Nossas Soluções</h2>
-            <p>Especialistas em Linha Pesada, Máquinas e Utilitários</p>
         </div>
         <div class="grid-services">
             <div class="card">
-                <i class="fas fa-sync-alt"></i>
-                <h3>Alternadores</h3>
-                <p>Manutenção completa, troca de escovas, placas retificadoras e reguladores de voltagem.</p>
+                <div class="card-img-container"><img src="img/cards/alternador.png" alt="Alternadores"></div>
+                <div class="card-info">
+                    <h3>Alternadores</h3>
+                    <p>Manutenção completa, troca de escovas, placas retificadoras e reguladores.</p>
+                </div>
             </div>
+
             <div class="card">
-                <i class="fas fa-key"></i>
-                <h3>Motores de Partida</h3>
-                <p>Reparo especializado para garantir a ignição perfeita do seu motor em qualquer condição.</p>
+                <div class="card-img-container"><img src="img/cards/motor-partida.png" alt="Motores de Partida"></div>
+                <div class="card-info">
+                    <h3>Motores de Partida</h3>
+                    <p>Reparo especializado para garantir a ignição perfeita do seu motor.</p>
+                </div>
             </div>
+
             <div class="card">
-                <i class="fas fa-microchip"></i>
-                <h3>Injeção Eletrônica</h3>
-                <p>Análise completa de sensores e atuadores para máxima eficiência e economia.</p>
+                <div class="card-img-container"><img src="img/cards/injecao.png" alt="Injeção Eletrônica"></div>
+                <div class="card-info">
+                    <h3>Injeção Eletrônica</h3>
+                    <p>Análise completa de sensores e atuadores para máxima eficiência.</p>
+                </div>
             </div>
+
             <div class="card">
-                <i class="fas fa-car-battery"></i>
-                <h3>Bateria e Carga</h3>
-                <p>Testes precisos de sistema de carga e substituição de baterias de alta performance.</p>
+                <div class="card-img-container"><img src="img/cards/bateria.png" alt="Bateria e Carga"></div>
+                <div class="card-info">
+                    <h3>Bateria e Carga</h3>
+                    <p>Testes precisos de sistema de carga e substituição de baterias.</p>
+                </div>
             </div>
+
             <div class="card">
-                <i class="fas fa-laptop-diagnostic"></i>
-                <h3>Scanner Automotivo</h3>
-                <p>Leitura de falhas e reset de parâmetros com os softwares mais atualizados do mercado.</p>
+                <div class="card-img-container"><img src="img/cards/scanner.png" alt="Scanner Automotivo"></div>
+                <div class="card-info">
+                    <h3>Scanner Automotivo</h3>
+                    <p>Leitura de falhas e reset de parâmetros com softwares atualizados.</p>
+                </div>
             </div>
+
             <div class="card">
-                <i class="fas fa-bolt"></i>
-                <h3>Chicotes Elétricos</h3>
-                <p>Reparo e reconstrução de fiação com isolamento e acabamento padrão original.</p>
+                <div class="card-img-container"><img src="img/cards/chicote.png" alt="Chicotes Elétricos"></div>
+                <div class="card-info">
+                    <h3>Chicotes Elétricos</h3>
+                    <p>Reparo e reconstrução de fiação com isolamento padrão original.</p>
+                </div>
             </div>
         </div>
     </section>
 
     <section class="cta-section">
         <h2>Seu caminhão ou máquina apresenta falhas?</h2>
-        <p style="margin-bottom: 30px;">Não deixe sua frota parada. Fale agora com um técnico especialista.</p>
-        <a href="https://wa.me/556793442497?text=Olá! Preciso de um atendimento urgente para meu veículo." class="btn btn-outline" style="background: white; color: var(--primary-blue); border:none;">Chamar no WhatsApp</a>
+        <a href="https://wa.me/556793442497?text=Olá! Preciso de atendimento urgente." class="btn btn-outline" style="background: white; color: var(--primary-blue); border:none;">Chamar no WhatsApp</a>
     </section>
 
     <footer>
-        <div class="footer-grid">
-            <div>
-                <h3>Só Elétrica</h3>
-                <p style="color: var(--text-gray); margin-top: 15px;">Especialistas em energia automotiva e diagnósticos avançados.</p>
-            </div>
-            <div>
-                <h4>Contato</h4>
-                <p style="color: var(--text-gray);">(67) 99344-2497</p>
-                <p style="color: var(--text-gray);">pauloeletricoarevalo@gmail.com</p>
-            </div>
-            <div>
-                <h4>Localização</h4>
-                <p style="color: var(--text-gray);">R. Conceição Interlano Neto, 182 - Vivendas do Parque</p>
-            </div>
-        </div>
-        <hr style="border: 0; border-top: 1px solid #333; margin-bottom: 20px;">
-        <p style="font-size: 0.8rem; color: var(--text-gray);">© 2026 Autoelétrica Só Elétrica. Excelência em Eletrônica Automotiva.</p>
+        <p style="font-size: 0.8rem; color: var(--text-gray);">© 2026 Autoelétrica Só Elétrica. R. Conceição Interlano Neto, 182 - Vivendas do Parque</p>
     </footer>
 
     <script>
-        // Modal Logic
         const modal = document.getElementById("modalAgendamento");
         const btn = document.getElementById("openModal");
         const span = document.getElementsByClassName("close-modal")[0];
@@ -280,14 +298,12 @@
         span.onclick = () => modal.style.display = "none";
         window.onclick = (event) => { if (event.target == modal) modal.style.display = "none"; }
 
-        // WhatsApp Form Logic
         document.getElementById('formAgendamento').onsubmit = function(e) {
             e.preventDefault();
             const nome = document.getElementById('nome').value;
             const veiculo = document.getElementById('veiculo').value;
             const problema = document.getElementById('problema').value;
-            
-            const texto = `Olá! Gostaria de agendar um serviço:%0A%0A*Nome:* ${nome}%0A*Veículo:* ${veiculo}%0A*Problema:* ${problema}`;
+            const texto = `Olá! Gostaria de agendar um serviço:%0A*Nome:* ${nome}%0A*Veículo:* ${veiculo}%0A*Problema:* ${problema}`;
             window.open(`https://wa.me/556793442497?text=${texto}`, '_blank');
             modal.style.display = "none";
         };
